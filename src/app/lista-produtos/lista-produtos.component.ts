@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CakeStoreApiService } from '../cake-store-api.service';
 
 @Component({
   selector: 'app-lista-produtos',
@@ -7,19 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaProdutosComponent implements OnInit {
 
-  produto: any;
+  produtos: any;
 
-  constructor() {
-    this.produto = {
-      nome: 'Teste',
-      descricao: 'Descrição',
-      preco: 10.25,
-      quantidadeEstoque: 100,
-      foto: 'https://www.chevrolet.com.br/content/dam/chevrolet/mercosur/brazil/portuguese/index/cars/cars-subcontent/segmento-carros/02-images/onix-premier.png?imwidth=960'
-    };
+  constructor(private api: CakeStoreApiService) {
+
   }
 
   ngOnInit(): void {
+    this.api.getProdutos().subscribe(response => this.produtos = response.produtos);
   }
 
 }

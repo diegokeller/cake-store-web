@@ -1,2 +1,2 @@
 <h2>Lista de Produtos</h2>
-<app-resumo-produto [produto]="produto"></app-resumo-produto>
+<app-resumo-produto *ngFor="let produto of produtos" [produto]="produto"></app-resumo-produto>
