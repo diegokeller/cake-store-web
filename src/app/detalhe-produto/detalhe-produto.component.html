@@ -1,7 +1,7 @@
 <h2>Produto: {{produto?.nome}}</h2>
-<p>{{produto.descricao}}</p>
-<strong>{{produto.preco | currency : 'BRL'}}</strong>
-<p>Quantidade em estoque: {{produto.quantidade_estoque}}</p>
+<p>{{produto?.descricao}}</p>
+<strong>{{produto?.preco | currency : 'BRL'}}</strong>
+<p>Quantidade em estoque: {{produto?.quantidade_estoque}}</p>
 <p>
-    <img [src]="produto.foto" style="width: 150px;">
+    <img [src]="produto?.foto" style="width: 150px;">
 </p>
