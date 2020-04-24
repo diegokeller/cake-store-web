@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { ListaProdutosComponent } from './lista-produtos/lista-produtos.component';
 import { ResumoProdutoComponent } from './resumo-produto/resumo-produto.component';
 import { CakeStoreApiService } from './cake-store-api.service';
+import { DetalheProdutoComponent } from './detalhe-produto/detalhe-produto.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListaProdutosComponent,
-    ResumoProdutoComponent
+    ResumoProdutoComponent,
+    DetalheProdutoComponent
   ],
   imports: [
     BrowserModule,

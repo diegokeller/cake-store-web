@@ -14,7 +14,7 @@ export class CakeStoreApiService {
   }
 
   getProduto(id) {
-    return this.http.get(`${environment.apiUrl}/produtos.json/${id}`);
+    return this.http.get(`${environment.apiUrl}/produtos/${id}.json`);
   }
 
 }

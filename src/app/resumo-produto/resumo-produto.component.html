@@ -1,10 +1,6 @@
 <div style="border: 1px solid silver; float: left; width: 300px; padding: 10px; margin: 10px;">
-    <h3>{{produto.nome}}</h3>
-    <p>{{produto.descricao}}</p>
+    <h3><a [routerLink]="['/produtos', produto.id]">{{produto.nome}}</a></h3>
     <strong>{{produto.preco | currency : 'BRL'}}</strong>
-    <p>
-        <span>Quantidade em estoque: {{produto.quantidadeEstoque}}</span>
-    </p>
     <p>
         <img [src]="produto.foto" style="width: 150px;">
     </p>
