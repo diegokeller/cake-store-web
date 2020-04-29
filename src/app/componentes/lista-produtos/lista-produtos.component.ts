@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { CakeStoreApiService } from '../cake-store-api.service';
+import { CakeStoreApiService } from '../../servicos/cake-store-api.service';
 
 @Component({
   selector: 'app-lista-produtos',
-  templateUrl: './lista-produtos.component.html',
-  styleUrls: ['./lista-produtos.component.scss']
+  templateUrl: './lista-produtos.component.html'
 })
 export class ListaProdutosComponent implements OnInit {
 

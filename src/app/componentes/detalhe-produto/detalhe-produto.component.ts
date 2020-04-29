@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { CakeStoreApiService } from '../cake-store-api.service';
+import { CakeStoreApiService } from '../../servicos/cake-store-api.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-detalhe-produto',
-  templateUrl: './detalhe-produto.component.html',
-  styleUrls: ['./detalhe-produto.component.scss']
+  templateUrl: './detalhe-produto.component.html'
 })
 export class DetalheProdutoComponent implements OnInit {
 

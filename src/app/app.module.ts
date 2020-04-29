@@ -4,10 +4,10 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ListaProdutosComponent } from './lista-produtos/lista-produtos.component';
-import { ResumoProdutoComponent } from './resumo-produto/resumo-produto.component';
-import { CakeStoreApiService } from './cake-store-api.service';
-import { DetalheProdutoComponent } from './detalhe-produto/detalhe-produto.component';
+import { ListaProdutosComponent } from './componentes/lista-produtos/lista-produtos.component';
+import { ResumoProdutoComponent } from './componentes/resumo-produto/resumo-produto.component';
+import { CakeStoreApiService } from './servicos/cake-store-api.service';
+import { DetalheProdutoComponent } from './componentes/detalhe-produto/detalhe-produto.component';
 
 @NgModule({
   declarations: [
