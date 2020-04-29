@@ -8,6 +8,7 @@ import { ListaProdutosComponent } from './componentes/lista-produtos/lista-produ
 import { ResumoProdutoComponent } from './componentes/resumo-produto/resumo-produto.component';
 import { CakeStoreApiService } from './servicos/cake-store-api.service';
 import { DetalheProdutoComponent } from './componentes/detalhe-produto/detalhe-produto.component';
+import { CarrinhoService } from './servicos/carrinho.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { DetalheProdutoComponent } from './componentes/detalhe-produto/detalhe-p
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [CakeStoreApiService],
+  providers: [CakeStoreApiService, CarrinhoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
