@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -6,6 +7,7 @@ import { Injectable } from '@angular/core';
 export class CarrinhoService {
 
   produtos: any[] = [];
+  produtoAdicionadoSubject = new Subject<any>();
 
   constructor() { }
 
@@ -20,7 +22,12 @@ export class CarrinhoService {
     if (!adicionou) {
       produto.quantidade = 1;
       this.produtos.push(produto);
+      this.produtoAdicionadoSubject.next(this.produtos.length);
     }
     console.log(this.produtos);
+  }
+
+  getQuantidadeItens() {
+    return this.produtoAdicionadoSubject.asObservable();
   }
 }
