@@ -9,13 +9,15 @@ import { ResumoProdutoComponent } from './componentes/resumo-produto/resumo-prod
 import { CakeStoreApiService } from './servicos/cake-store-api.service';
 import { DetalheProdutoComponent } from './componentes/detalhe-produto/detalhe-produto.component';
 import { CarrinhoService } from './servicos/carrinho.service';
+import { CarrinhoComponent } from './componentes/carrinho/carrinho.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListaProdutosComponent,
     ResumoProdutoComponent,
-    DetalheProdutoComponent
+    DetalheProdutoComponent,
+    CarrinhoComponent
   ],
   imports: [
     BrowserModule,

@@ -20,8 +20,12 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.itensCarrinho = this.carrinho.getQuantidadeItensAgora();
     this.quantidadeItensSubscription = this.carrinho.getQuantidadeItens()
-      .subscribe(quantidade => this.itensCarrinho = quantidade);
+      .subscribe(quantidade => {
+        console.log(quantidade);
+        this.itensCarrinho = quantidade;
+      });
   }
 
   ngOnDestroy() {

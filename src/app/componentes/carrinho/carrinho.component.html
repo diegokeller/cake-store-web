@@ -1,0 +1,26 @@
+<h2>Carrinho de Compras</h2>
+<table class="table">
+    <thead>
+        <th>Produto</th>
+        <th>Preço</th>
+        <th>Quantidade</th>
+        <th>Total</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of itens">
+            <td>
+                <img [src]="item?.foto" style="width: 70px; vertical-align: middle;">
+                {{item.nome}}
+            </td>
+            <td>{{item.preco | currency: 'BRL'}}</td>
+            <td>{{item.quantidade}}</td>
+            <td>{{item.quantidade * item.preco | currency: 'BRL'}}</td>
+        </tr>
+        <tr class="table-active">
+            <td colspan="3"><strong>TOTAL:</strong></td>
+            <td>
+                <strong>{{total | currency: 'BRL'}}</strong>
+            </td>
+        </tr>
+    </tbody>
+</table>

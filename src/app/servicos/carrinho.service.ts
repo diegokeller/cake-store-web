@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,9 @@ export class CarrinhoService {
   produtos: any[] = [];
   produtoAdicionadoSubject = new Subject<any>();
 
-  constructor() { }
+  constructor() {
+    this.getItens().subscribe(itens => this.produtos = itens);
+  }
 
   adicionarProduto(produto) {
     let adicionou = false;
@@ -24,10 +26,18 @@ export class CarrinhoService {
       this.produtos.push(produto);
       this.produtoAdicionadoSubject.next(this.produtos.length);
     }
-    console.log(this.produtos);
+    localStorage.setItem('carrinho', JSON.stringify(this.produtos));
   }
 
   getQuantidadeItens() {
     return this.produtoAdicionadoSubject.asObservable();
+  }
+
+  getQuantidadeItensAgora() {
+    return this.produtos.length;
+  }
+
+  getItens(): Observable<any> {
+    return of(JSON.parse(localStorage.getItem('carrinho')));
   }
 }
