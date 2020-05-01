@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject, Observable, of } from 'rxjs';
+import { Subject, Observable, of, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,17 +7,20 @@ import { Subject, Observable, of } from 'rxjs';
 export class CarrinhoService {
 
   produtos: any[] = [];
-  produtoAdicionadoSubject = new Subject<any>();
+  produtoAdicionadoSubject = new BehaviorSubject<any>(0);
+  produtosSubject = new BehaviorSubject<any>([]);
 
   constructor() {
-    this.getItens().subscribe(itens => this.produtos = itens);
+    this.produtos = JSON.parse(localStorage.getItem('carrinho'));
+    this.produtosSubject.next(this.produtos);
+    this.produtoAdicionadoSubject.next(this.produtos.length);
   }
 
   adicionarProduto(produto) {
     let adicionou = false;
     this.produtos.forEach(item => {
       if (produto.id === item.id) {
-        produto.quantidade += 1;
+        item.quantidade += 1;
         adicionou = true;
       }
     });
@@ -27,17 +30,33 @@ export class CarrinhoService {
       this.produtoAdicionadoSubject.next(this.produtos.length);
     }
     localStorage.setItem('carrinho', JSON.stringify(this.produtos));
+    this.produtosSubject.next(this.produtos);
+  }
+
+  diminuirQuantidade(produto) {
+    let removeu = false;
+    this.produtos.forEach(item => {
+      if (produto.id === item.id) {
+        item.quantidade -= 1;
+        if (item.quantidade === 0) {
+          removeu = true;
+        }
+      }
+    });
+    if (removeu) {
+      const i = this.produtos.findIndex(item => item.id === produto.id);
+      this.produtos.splice(i, 1);
+      this.produtoAdicionadoSubject.next(this.produtos.length);
+    }
+    localStorage.setItem('carrinho', JSON.stringify(this.produtos));
+    this.produtosSubject.next(this.produtos);
   }
 
   getQuantidadeItens() {
     return this.produtoAdicionadoSubject.asObservable();
   }
 
-  getQuantidadeItensAgora() {
-    return this.produtos.length;
-  }
-
   getItens(): Observable<any> {
-    return of(JSON.parse(localStorage.getItem('carrinho')));
+    return this.produtosSubject.asObservable();
   }
 }

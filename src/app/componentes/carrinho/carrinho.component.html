@@ -1,5 +1,6 @@
 <h2>Carrinho de Compras</h2>
-<table class="table">
+<span *ngIf="!itens || itens?.length === 0">Seu carrinho está vazio...</span>
+<table class="table" *ngIf="itens?.length > 0">
     <thead>
         <th>Produto</th>
         <th>Preço</th>
@@ -14,9 +15,9 @@
             </td>
             <td>{{item.preco | currency: 'BRL'}}</td>
             <td>
-                <button type="button" class="btn btn-primary">-</button>
+                <button type="button" class="btn btn-primary" (click)="diminuir(item)">-</button>
                 <span class="px-4">{{item.quantidade}}</span>
-                <button type="button" class="btn btn-primary">+</button>
+                <button type="button" class="btn btn-primary" (click)="aumentar(item)">+</button>
             </td>
             <td>{{item.quantidade * item.preco | currency: 'BRL'}}</td>
         </tr>

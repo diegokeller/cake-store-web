@@ -8,7 +8,7 @@ import { CarrinhoService } from 'src/app/servicos/carrinho.service';
 export class CarrinhoComponent implements OnInit {
 
   itens: any[];
-  
+
   constructor(
     private carrinho: CarrinhoService
   ) { }
@@ -21,6 +21,14 @@ export class CarrinhoComponent implements OnInit {
     return this.itens
       .map(item => item.quantidade * item.preco)
       .reduce((acc, val) => acc + val);
+  }
+
+  aumentar(item) {
+    this.carrinho.adicionarProduto(item);
+  }
+
+  diminuir(item) {
+    this.carrinho.diminuirQuantidade(item);
   }
 
 }
