@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,6 +10,11 @@ import { CakeStoreApiService } from './servicos/cake-store-api.service';
 import { DetalheProdutoComponent } from './componentes/detalhe-produto/detalhe-produto.component';
 import { CarrinhoService } from './servicos/carrinho.service';
 import { CarrinhoComponent } from './componentes/carrinho/carrinho.component';
+
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+
+registerLocaleData(localePt, 'pt');
 
 @NgModule({
   declarations: [
@@ -24,7 +29,11 @@ import { CarrinhoComponent } from './componentes/carrinho/carrinho.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [CakeStoreApiService, CarrinhoService],
+  providers: [
+    CakeStoreApiService,
+    CarrinhoService,
+    {provide: LOCALE_ID, useValue: 'pt'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
