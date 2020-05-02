@@ -22,4 +22,11 @@ export class CakeStoreApiService {
     return this.http.post(`${environment.apiUrl}/pedidos.json`, pedido);
   }
 
+  getPedidos(): Observable<any> {
+    return this.http.get(`${environment.apiUrl}/pedidos.json`);
+  }
+
+  getPedido(id): Observable<any> {
+    return this.http.get(`${environment.apiUrl}/pedidos/${id}.json`);
+  }
 }

@@ -13,6 +13,7 @@ import { CarrinhoComponent } from './componentes/carrinho/carrinho.component';
 
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
+import { ListaPedidosComponent } from './componentes/lista-pedidos/lista-pedidos.component';
 
 registerLocaleData(localePt, 'pt');
 
@@ -22,7 +23,8 @@ registerLocaleData(localePt, 'pt');
     ListaProdutosComponent,
     ResumoProdutoComponent,
     DetalheProdutoComponent,
-    CarrinhoComponent
+    CarrinhoComponent,
+    ListaPedidosComponent
   ],
   imports: [
     BrowserModule,

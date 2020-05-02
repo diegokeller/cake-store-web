@@ -1,0 +1,20 @@
+<h1>Pedidos</h1>
+<p *ngIf="!temPedidos">Você ainda não tem nenhum pedido</p>
+<table class="table" *ngIf="temPedidos">
+    <thead>
+        <th>Id</th>
+        <th>Data</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let pedido of pedidos">            
+            <td>{{pedido.id}}</td>
+            <td>{{pedido.data | date}}</td>
+        </tr>
+        <tr class="table-active">
+            <td><strong>TOTAL:</strong></td>
+            <td>
+                <strong>{{pedidos.length}} pedidos encontrados</strong>
+            </td>
+        </tr>
+    </tbody>
+</table>
