@@ -18,4 +18,8 @@ export class CakeStoreApiService {
     return this.http.get(`${environment.apiUrl}/produtos/${id}.json`);
   }
 
+  postPedido(pedido) {
+    return this.http.post(`${environment.apiUrl}/pedidos.json`, pedido);
+  }
+
 }

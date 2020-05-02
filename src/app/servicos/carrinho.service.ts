@@ -59,4 +59,11 @@ export class CarrinhoService {
   getItens(): Observable<any> {
     return this.produtosSubject.asObservable();
   }
+
+  limpar() {
+    this.produtos = [];
+    localStorage.setItem('carrinho', JSON.stringify(this.produtos));
+    this.produtosSubject.next(this.produtos);
+    this.produtoAdicionadoSubject.next(0);
+  }
 }

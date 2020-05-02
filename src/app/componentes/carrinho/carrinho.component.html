@@ -1,5 +1,5 @@
 <h2>Carrinho de Compras</h2>
-<span *ngIf="!itens || itens?.length === 0">Seu carrinho está vazio...</span>
+<span *ngIf="vazio">Seu carrinho está vazio...</span>
 <table class="table" *ngIf="itens?.length > 0">
     <thead>
         <th>Produto</th>
@@ -29,3 +29,4 @@
         </tr>
     </tbody>
 </table>
+<button type="button" *ngIf="!vazio" class="btn btn-primary" (click)="enviar()">Enviar Pedido</button>

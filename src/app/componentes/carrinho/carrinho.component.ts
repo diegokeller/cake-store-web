@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CarrinhoService } from 'src/app/servicos/carrinho.service';
+import { CakeStoreApiService } from 'src/app/servicos/cake-store-api.service';
 
 @Component({
   selector: 'app-carrinho',
@@ -10,7 +11,8 @@ export class CarrinhoComponent implements OnInit {
   itens: any[];
 
   constructor(
-    private carrinho: CarrinhoService
+    private carrinho: CarrinhoService,
+    private api: CakeStoreApiService
   ) { }
 
   ngOnInit(): void {
@@ -29,6 +31,31 @@ export class CarrinhoComponent implements OnInit {
 
   diminuir(item) {
     this.carrinho.diminuirQuantidade(item);
+  }
+
+  enviar() {
+    const data = new Date();
+    const dataString =  `${data.getFullYear()}-${data.getMonth() + 1}-${data.getDate()} ` +
+                        `${data.getHours()}:${data.getMinutes()}:${data.getSeconds()}`;
+    const pedido = {
+      data: dataString,
+      itens: this.itens.map((item) => {
+        return {
+          id_produto: item.id,
+          quantidade: item.quantidade
+        };
+      })
+    };
+    this.api.postPedido(pedido).subscribe(result => {
+      if (result) {
+        window.alert('Pedido enviado com sucesso');
+        this.carrinho.limpar();
+      }
+    });
+  }
+
+  get vazio() {
+    return !this.itens || this.itens?.length === 0;
   }
 
 }
