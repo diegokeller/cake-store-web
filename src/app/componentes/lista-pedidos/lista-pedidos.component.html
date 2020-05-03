@@ -4,14 +4,16 @@
     <thead>
         <th>Id</th>
         <th>Data</th>
+        <th></th>
     </thead>
     <tbody>
         <tr *ngFor="let pedido of pedidos">            
             <td>{{pedido.id}}</td>
             <td>{{pedido.data | date}}</td>
+            <td><a routerLink="/pedidos/{{pedido.id}}">Visualizar</a></td>
         </tr>
         <tr class="table-active">
-            <td><strong>TOTAL:</strong></td>
+            <td colspan="2"><strong>TOTAL:</strong></td>
             <td>
                 <strong>{{pedidos.length}} pedidos encontrados</strong>
             </td>
