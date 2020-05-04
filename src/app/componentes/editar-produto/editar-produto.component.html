@@ -1,0 +1,31 @@
+<h1>Editar Produto</h1>
+<form [formGroup]="produtoForm">
+    <div class="form-group">
+        <label>Nome: </label>
+        <input type="text" name="nome" id="nome" formControlName="nome" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Descrição</label>
+        <textarea name="descricao" formControlName="descricao" class="form-control"></textarea>
+    </div>
+    <div class="form-group row">
+        <div class="col-10">
+            <label>Foto: </label>
+            <input (change)="atualizarFoto()" type="text" name="foto" id="foto" formControlName="foto" class="form-control">
+        </div>
+        <div class="col-2">
+            <img *ngIf="produto?.foto" [src]="produto.foto" style="width: 150px;">
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-6">
+            <label>Preço: </label>
+            <input type="number" name="preco" id="preco" formControlName="preco" class="form-control">
+        </div>
+        <div class="form-group col-6">
+            <label>Quantidade em estoque: </label>
+            <input type="number" name="quantidade_estoque" id="quantidade_estoque" formControlName="quantidade_estoque" class="form-control">
+        </div>
+    </div>
+    <input type="button" value="Salvar" class="btn btn-primary" (click)="salvar()">
+</form>

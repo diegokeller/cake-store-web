@@ -1,2 +1,4 @@
 <h2>Lista de Produtos</h2>
+<input type="button" class="btn btn-primary mx-4" value="Adicionar" routerLink="/editar-produto">
+<hr>
 <app-resumo-produto *ngFor="let produto of produtos" [produto]="produto"></app-resumo-produto>

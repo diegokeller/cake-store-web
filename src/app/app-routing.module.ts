@@ -5,11 +5,14 @@ import { DetalheProdutoComponent } from './componentes/detalhe-produto/detalhe-p
 import { CarrinhoComponent } from './componentes/carrinho/carrinho.component';
 import { ListaPedidosComponent } from './componentes/lista-pedidos/lista-pedidos.component';
 import { DetalhePedidoComponent } from './componentes/detalhe-pedido/detalhe-pedido.component';
+import { EditarProdutoComponent } from './componentes/editar-produto/editar-produto.component';
 
 
 const routes: Routes = [
   { path: 'produtos', component: ListaProdutosComponent },
   { path: 'produtos/:id', component: DetalheProdutoComponent },
+  { path: 'editar-produto/:id', component: EditarProdutoComponent },
+  { path: 'editar-produto', component: EditarProdutoComponent },
   { path: 'carrinho', component: CarrinhoComponent },
   { path: 'pedidos', component: ListaPedidosComponent },
   { path: 'pedidos/:id', component: DetalhePedidoComponent },

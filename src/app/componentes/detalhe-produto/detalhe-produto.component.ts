@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CakeStoreApiService } from '../../servicos/cake-store-api.service';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap, RouterLink } from '@angular/router';
 import { CarrinhoService } from 'src/app/servicos/carrinho.service';
 
 @Component({
@@ -14,7 +14,8 @@ export class DetalheProdutoComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private api: CakeStoreApiService,
-    private carrinho: CarrinhoService
+    private carrinho: CarrinhoService,
+    private router: Router
   ) {
 
   }
@@ -26,6 +27,10 @@ export class DetalheProdutoComponent implements OnInit {
 
   adicionar(produto) {
     this.carrinho.adicionarProduto(produto);
+  }
+
+  editar(produto) {
+    this.router.navigate(['editar-produto', produto.id]);
   }
 
 }

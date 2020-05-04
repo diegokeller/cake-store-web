@@ -15,6 +15,8 @@ import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { ListaPedidosComponent } from './componentes/lista-pedidos/lista-pedidos.component';
 import { DetalhePedidoComponent } from './componentes/detalhe-pedido/detalhe-pedido.component';
+import { EditarProdutoComponent } from './componentes/editar-produto/editar-produto.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 registerLocaleData(localePt, 'pt');
 
@@ -26,12 +28,14 @@ registerLocaleData(localePt, 'pt');
     DetalheProdutoComponent,
     CarrinhoComponent,
     ListaPedidosComponent,
-    DetalhePedidoComponent
+    DetalhePedidoComponent,
+    EditarProdutoComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [
     CakeStoreApiService,
