@@ -34,11 +34,8 @@ export class CarrinhoComponent implements OnInit {
   }
 
   enviar() {
-    const data = new Date();
-    const dataString =  `${data.getFullYear()}-${data.getMonth() + 1}-${data.getDate()} ` +
-                        `${data.getHours()}:${data.getMinutes()}:${data.getSeconds()}`;
     const pedido = {
-      data: dataString,
+      data: new Date(),
       itens: this.itens.map((item) => {
         return {
           id_produto: item.id,
